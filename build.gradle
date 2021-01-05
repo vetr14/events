@@ -1,0 +1,60 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'ru.letishka'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+//ext {
+//    set('testcontainersVersion', "1.15.1")
+//}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtime 'com.h2database:h2'
+
+    annotationProcessor 'org.projectlombok:lombok'
+
+    compile 'org.flywaydb:flyway-core'
+
+    compileOnly 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    testImplementation 'org.testcontainers:junit-jupiter'
+//    implementation 'org.apache.kafka:kafka-streams'
+//    implementation 'org.flywaydb:flyway-core'
+//    implementation 'org.springframework.kafka:spring-kafka'
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//    runtimeOnly 'org.postgresql:postgresql'
+//    testImplementation 'org.springframework.kafka:spring-kafka-test'
+//    testImplementation 'org.springframework.security:spring-security-test'
+//    testImplementation 'org.testcontainers:kafka'
+//    testImplementation 'org.testcontainers:postgresql'
+}
+
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+//    }
+//}
+
+test {
+    useJUnitPlatform()
+}
